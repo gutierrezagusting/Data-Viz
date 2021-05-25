@@ -116,20 +116,20 @@ Resources1× 0.5× 0.25×Rerun
             </div>
             <svg id='legend'>
                 <g>
-                    <rect x="10" y="0" width="40" height="40" fill="tomato"></rect>
-                    <text x="60" y="20" fill="white">Less than 10%</text>
+                    <rect x="10" y="0" width="40" height="40" fill="limegreen"></rect>
+                    <text x="60" y="20" fill="white">Less than 5%</text>
                 </g>
                 <g>
-                    <rect x="10" y="40" width="40" height="40" fill="orange"></rect>
-                    <text x="60" y="60" fill="white">10% to 15%</text>
+                    <rect x="10" y="40" width="40" height="40" fill="lightgreen"></rect>
+                    <text x="60" y="60" fill="white">5% to 10%</text>
                 </g>
                 <g>
-                    <rect x="10" y="80" width="40" height="40" fill="lightgreen"></rect>
-                    <text x="60" y="100" fill="white">15% to 20%</text>
+                    <rect x="10" y="80" width="40" height="40" fill="orange"></rect>
+                    <text x="60" y="100" fill="white">10% to 15%</text>
                 </g>
                 <g>
-                    <rect x="10" y="120" width="40" height="40" fill="limegreen"></rect>
-                    <text x="60" y="140" fill="white">More than 20%</text>
+                    <rect x="10" y="120" width="40" height="40" fill="tomato"></rect>
+                    <text x="60" y="140" fill="white">More than 15%</text>
                 </g>
             </svg>
             <div id='description'>Percentage of children born with lowweight in the US. Source: <a href='https://www.countyhealthrankings.org/explore-health-rankings/rankings-data-documentation'>University of Wisconsin Country Health Rankings and Roadmap</a></div>
@@ -178,14 +178,14 @@ let drawMap = () => {
                     return item['fips'] === id
                 })
                 let percentage = county['low_birth']
-                if(percentage <= 10){
-                    return 'tomato'
+                if(percentage <= 5){
+                    return 'limegreen'
+                }else if(percentage <= 10){
+                    return 'lightgreen'
                 }else if(percentage <= 15){
                     return 'orange'
-                }else if(percentage <= 20){
-                    return 'lightgreen'
                 }else{
-                    return 'limegreen'
+                    return 'tomato'
                 }
             })
             .attr('data-fips', (countyDataItem) => {
